@@ -1,0 +1,12 @@
+class Solution {
+public:
+    bool checkOverlap(int radius, int xCenter, int yCenter, int x1, int y1, int x2, int y2) {
+        auto getMin=[](int minE, int maxE,int centerCoord)->int{
+            if(centerCoord>=minE && centerCoord<=maxE) return 0;
+            return centerCoord < minE ? minE - centerCoord : centerCoord - maxE;
+        };
+        int X_ch=getMin(x1,x2,xCenter);
+        int Y_ch=getMin(y1,y2,yCenter);
+        return X_ch*X_ch + Y_ch*Y_ch <= radius*radius;
+    }
+};
